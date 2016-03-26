@@ -4,6 +4,14 @@
         DBF - Lorem Ipsum Generator
 @stop
 
+@section('tool_name')
+        Lorem Ipsum Generator
+@stop
+
+@section('tool_description')
+        This DBF tool generates filler text 
+@stop
+
 @section('content')
 <form class="form-horizontal">
         <fieldset>
@@ -95,6 +103,21 @@
                                 </div>
                         </div>
                 </div>
+                <div class="row">
+                        <div class="col-lg-12">
+                                <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Generate sample data</button>
+                                </div>                  
+                        </div>
+                </div>
         </fieldset>
 </form>
+<div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Output</h3>
+        </div>
+        <div class="panel-body">
+                [name=>'smith']
+        </div>
+</div>
 @stop

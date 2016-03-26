@@ -4,6 +4,14 @@
 DBF - XKCD Password Generator
 @stop
 
+@section('tool_name')
+        XKCD Password Generator
+@stop
+
+@section('tool_description')
+        XKCD Password Generator
+@stop
+
 @section('content')
 <form class="form-horizontal">
         <fieldset>

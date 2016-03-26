@@ -21,7 +21,8 @@
         <div class="container">
                 <div class="jumbotron">
                         <h1>Developer's Best Friend</h1>
-                        <p>Your very best friend for software development.</p>
+                        <h2>@yield('tool_name')</h2>
+                        <p>@yield('tool_description')</p>
                 </div>
                 <section>
                     {{-- Main page content will be yielded here --}}
