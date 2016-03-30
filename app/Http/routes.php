@@ -13,27 +13,14 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', function () {
-        return view('index');
-    });
-
-    Route::get('/lorem', function () {
-        return view('lorem.index');
-    });
-
-    Route::get('/rug', function () {
-        return view('rug.index');
-    });
-
-    Route::get('/xkcd', function () {
-        return view('xkcd.index');
-    });
-
-    Route::get('/practice', function () {
-        return view('practice');
-    });
-
+        Route::get('/', function () {
+                return view('index');
+        });
+        Route::get('/lorem', 'lorem\LoremController@getIndex');
+        Route::post('/lorem', 'lorem\LoremController@postIndex');
+        Route::get('/rug', 'rug\RUGController@getIndex');
+        Route::post('/rug', 'rug\RUGController@postIndex');
+        Route::get('/xkcd', 'xkcd\XKCDController@getIndex');
+        Route::post('/xkcd', 'xkcd\XKCDController@postIndex');
     
-    
-
 });

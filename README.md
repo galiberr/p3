@@ -10,6 +10,11 @@
 
 ## Details for Teaching Team
 
+## Additional Packages
+
+fzaninotto/faker
+soapbox/laravel-formatter to convert data sets to/from arrays, CSV, JSON, XML and YAML.
+
 ## Credits
 <http://johnwbartlett.com/cf_tipsntricks/index.cfm?TopicID=86> Javascript code for moving selected elements from one select box to another, I added functionality to move all elements from one select box to the other.
 

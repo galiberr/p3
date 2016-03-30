@@ -17,6 +17,7 @@
 <div class="panel panel-default">
         <form name="lorem_form" id="lorem_form" class="form-horizontal" method="POST" action="/lorem">
                 <fieldset>
+                        {{ csrf_field() }}
                         {{-- Theme selector --}}
                         <div class="row">
                                 <div class="col-lg-8">
@@ -25,19 +26,19 @@
                                                 <div class="col-lg-9">
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="lorem_theme" id="lorem_theme" value="traditional" type="radio">
+                                                                        <input name="lorem_theme" id="lorem_theme" value="0" type="radio" <?php if (!isset($_POST['lorem_theme']) || ($_POST['lorem_theme'] == '0')) echo 'checked' ?>>
                                                                         Traditional Latin
                                                                 </label>
                                                                 <label>
-                                                                        <input name="lorem_theme" id="lorem_theme" value="python" type="radio">
+                                                                        <input name="lorem_theme" id="lorem_theme" value="1" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '1')) echo 'checked' ?>>
                                                                         Monty Python
                                                                 </label>
                                                                 <label>
-                                                                        <input name="lorem_theme" id="lorem_theme" value="movie" type="radio">
+                                                                        <input name="lorem_theme" id="lorem_theme" value="2" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '2')) echo 'checked' ?>>
                                                                         AFI top film quotes 
                                                                 </label>
                                                                 <label>
-                                                                        <input name="lorem_theme" id="lorem_theme" value="beatles" type="radio">
+                                                                        <input name="lorem_theme" id="lorem_theme" value="3" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '3')) echo 'checked' ?>>
                                                                         Beatles lyrics
                                                                 </label>
                                                         </div>
@@ -57,15 +58,15 @@
                                                 <div class="col-lg-9">
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="lorem_format" id="lorem_format" value="paragraph" type="radio" checked="">
+                                                                        <input name="lorem_format" id="lorem_format" value="0" type="radio" <?php if (!isset($_POST['lorem_format']) || ($_POST['lorem_format'] == '0')) echo 'checked' ?>>
                                                                         Paragraph
                                                                 </label>
                                                                 <label>
-                                                                        <input name="lorem_format" id="lorem_format" value="unordered_list" type="radio">
+                                                                        <input name="lorem_format" id="lorem_format" value="1" type="radio" <?php if (isset($_POST['lorem_format']) && ($_POST['lorem_format'] == '1')) echo 'checked' ?>>
                                                                         Bullet list
                                                                 </label>
                                                                 <label>
-                                                                        <input name="lorem_format" id="lorem_format" value="ordered_list" type="radio">
+                                                                        <input name="lorem_format" id="lorem_format" value="2" type="radio" <?php if (isset($_POST['lorem_format']) && ($_POST['lorem_format'] == '2')) echo 'checked' ?>>
                                                                         Ordered list
                                                                 </label>
                                                         </div>
@@ -82,12 +83,16 @@
                                         <div class="form-group">
                                                 <label for="lorem_num_sentences" class="col-lg-3 control-label">No. sentences</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="lorem_num_sentences" name="lorem_num_sentences" placeholder="Number of sentences per paragraph" type="text">
+                                                        <input class="form-control" id="lorem_num_sentences" name="lorem_num_sentences" placeholder="Number of sentences per paragraph" type="text" value="{{ old('lorem_num_sentences') }}">
                                                 </div>
                                         </div>
                                 </div>
                                 <div class="col-lg-4">
-                                        <p class="text-danger">Number of sentences must be between 5 and 30.</p>
+                                        <p class="text-danger">
+                                                @foreach ($errors->get('lorem_num_sentences') as $error)
+                                                        {{ $error }}<br/>
+                                                @endforeach
+                                        </p>
                                 </div>
                         </div>
                         <div class="row" name="lorem_num_paragraphs_div" id="lorem_num_paragraphs_div">
@@ -95,12 +100,16 @@
                                         <div class="form-group">
                                                 <label for="lorem_num_paragraphs" class="col-lg-3 control-label">No. paragraphs</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="lorem_num_paragraphs" name="lorem_num_paragraphs" placeholder="Total number of paragraphs" type="text">
+                                                        <input class="form-control" id="lorem_num_paragraphs" name="lorem_num_paragraphs" placeholder="Total number of paragraphs" type="text" value="{{ old('lorem_num_paragraphs') }}">
                                                 </div>
                                         </div>
                                 </div>
                                 <div class="col-lg-4">
-                                        <p class="text-danger">Number of paragraphs must be between 1 and 50.</p>
+                                        <p class="text-danger">
+                                                @foreach ($errors->get('lorem_num_paragraphs') as $error)
+                                                        {{ $error }}<br/>
+                                                @endforeach
+                                        </p>
                                 </div>
                         </div>
 
@@ -110,12 +119,16 @@
                                         <div class="form-group">
                                                 <label for="lorem_num_items" class="col-lg-3 control-label">No. list items</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="lorem_num_items" name="lorem_num_items" placeholder="Total number of list items" type="text">
+                                                        <input class="form-control" id="lorem_num_items" name="lorem_num_items" placeholder="Total number of list items" type="text" value="{{ old('lorem_num_items') }}">
                                                 </div>
                                         </div>
                                 </div>
                                 <div class="col-lg-4">
-                                        <p class="text-danger">Number of list items must be between 5 and 100.</p>
+                                        <p class="text-danger">
+                                                @foreach ($errors->get('lorem_num_items') as $error)
+                                                        {{ $error }}<br/>
+                                                @endforeach
+                                        </p>
                                 </div>
                         </div>
                         {{-- Output format / copy to clipboard --}}
@@ -126,19 +139,14 @@
                                                 <div class="col-lg-3">
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="lorem_output" id="lorem_output" value="text" type="radio">
+                                                                        <input name="lorem_output" id="lorem_output" value="0" type="radio" <?php if (!isset($_POST['lorem_output']) || ($_POST['lorem_output'] == '0')) echo 'checked' ?>>
                                                                         Text
                                                                 </label>
                                                                 <label>
-                                                                        <input name="lorem_output" id="lorem_output" value="html" type="radio">
+                                                                        <input name="lorem_output" id="lorem_output" value="1" type="radio" <?php if (isset($_POST['lorem_output']) && ($_POST['lorem_output'] == '1')) echo 'checked' ?>>
                                                                         HTML code
                                                                 </label>
                                                         </div>
-                                                </div>
-                                                <div class="col-lg-6 checkbox">
-                                                        <label>
-                                                                <input type="checkbox" name="lorem_clipboard" id="lorem_clipboard" > Copy to clipboard
-                                                        </label>
                                                 </div>
                                         </div>
                                 </div>
@@ -156,6 +164,11 @@
                                         </div>
                                 </div>
                                 <div class="col-lg-4">
+                                        <p class="text-danger">
+                                                @if(count($errors) > 0)
+                                                        Please correct the errors above and try again.
+                                                @endif
+                                        </p>
                                 </div>
                         </div>
                 </fieldset>
@@ -175,5 +188,5 @@
 @section('body')
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="/css/javascript.js"></script>
+        <script src="/css/lorem.js"></script>
 @stop

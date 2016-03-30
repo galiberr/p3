@@ -30,7 +30,7 @@ function SelectSort(SelList)
     {
         for (y=x + 1; y < SelList.length; y++)
         {
-            if (SelList[x].text > SelList[y].text)
+            if (parseInt(SelList[x].value) > parseInt(SelList[y].value))
             {
                 // Swap rows
                 ID=SelList[x].value;
