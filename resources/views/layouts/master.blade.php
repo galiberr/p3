@@ -2,18 +2,15 @@
 <html>
 <head>
     <title>
-        {{-- Yield the title if it exists, otherwise default to 'Foobooks' --}}
         @yield('title', 'Developer\'s Best Friend')
     </title>
 
     <meta charset='utf-8'>
-
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href='/css/dbf.css' rel='stylesheet'>
     <link href='/css/bootstrap.css' rel='stylesheet'>
     <link href='/css/bootstrap.min.css' rel='stylesheet'>
 
-    {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
     @yield('head')
 
 </head>
@@ -36,9 +33,13 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                 </button>
+                                
+                                {{-- @yield for home page link (either # or /) --}}
                                 <a class="navbar-brand" href="@yield('homeLink')">DBF Home</a>
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                                
+                                {{-- @yield statements for tool links (either appropriate route or # if we're currently on that tool --}}
                                 <ul class="nav navbar-nav">
                                         @yield('loremLink')Lorem Ipsum Generator</a></li>
                                         @yield('rugLink')Random User Generator</a></li>
@@ -49,7 +50,7 @@
                 </nav>
                 
                 <section>
-                    {{-- Main page content will be yielded here --}}
+                    {{-- Main page content --}}
                     @yield('content')
                 </section>
 

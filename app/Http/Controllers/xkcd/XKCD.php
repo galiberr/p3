@@ -1,12 +1,12 @@
 <?php
 /*
  * Author:      Roland Galibert
- * Date:        February 18, 2016
- * For:         CSCI E-15 Dynamic Web Applications, Spring 2016 - Project 2
- * Purpose:     xkcd controller file for xkcd Password Generator
+ * Date:        March 31, 2016
+ * For:         CSCI E-15 Dynamic Web Applications, Spring 2016 - Project 3
+ * Purpose:     XKCD class for XKCD password generator tool
  */
-namespace App\Http\Controllers\xkcd;
 
+namespace App\Http\Controllers\xkcd;
 use App\Http\Controllers\xkcd\Words;
 
 class XKCD {
@@ -56,6 +56,7 @@ class XKCD {
                 ".",
                 ","
         ];
+
         /*
          * This is the actual function to generate a password based on
          * parameters

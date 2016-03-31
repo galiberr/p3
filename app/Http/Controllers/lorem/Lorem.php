@@ -1,47 +1,70 @@
 <?php
+/*
+ * Author:      Roland Galibert
+ * Date:        March 31, 2016
+ * For:         CSCI E-15 Dynamic Web Applications, Spring 2016 - Project 3
+ * Purpose:     Lorem class for Lorem Ipsum generator tool
+ */
 
 namespace App\Http\Controllers\lorem;
-
 use \Faker\Factory;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Lorem
- *
- * @author galiberr
- */
 class Lorem {
 
+        /* 
+         * Theme radio button values
+         */
         const THEME_LATIN = 0;
         const THEME_PYTHON = 1;
         const THEME_MOVIE = 2;
         const THEME_LYRICS = 3;
+
+        /* 
+         * Lorem Ipsum form radio button values
+         */
         const FORMAT_PARAGRAPH = 0;
         const FORMAT_UNORDERED_LIST = 1;
         const FORMAT_ORDERED_LIST = 2;
+        
+        /* 
+         * Paragraph form parameter minimum/maximum values
+         */
         const SENTENCE_MIN = 1;
         const SENTENCE_MAX = 40;
         const PARAGRAPH_MIN = 1;
         const PARAGRAPH_MAX = 40;
+
+        /* 
+         * Unordered/ordered list form parameter minimum/maximum values
+         */
         const LIST_MIN = 5;
         const LIST_MAX = 100;
         const OUTPUT_TEXT = 0;
         const OUTPUT_HTML = 1;
+        
+        /* 
+         * Theme file locations
+         */
         const FILE_DIR = "./files/lorem";
         const FILE_LATIN = "latin.txt";
         const FILE_PYTHON = "python.txt";
         const FILE_MOVIE = "movie.txt";
         const FILE_LYRICS = "lyrics.txt";
 
+        /* 
+         * Current theme and related array of source sentences
+         */
         public static $current_theme;
-        private static $faker;
         private static $sentenceBase;
 
+        /* 
+         * fzaninotto/faker object
+         */
+        private static $faker;
+
+        /* 
+         * Public method to return generated text
+         */
         public static function generateLorem($theme, $format, $num_sentences, $num_paragraphs, $num_items) {
                 switch($format) {
                         case self::FORMAT_PARAGRAPH:
@@ -53,6 +76,10 @@ class Lorem {
                 }
         }
 
+        /* 
+         * Method to call paragraph generation functions (Latin text handled
+         * differently from other themes)
+         */
         private static function generateParagraphs($theme, $num_sentences, $num_paragraphs) {
                 if ($theme == self::THEME_LATIN) {
                         return self::generateLatinParagraphs($num_sentences, $num_paragraphs);
@@ -61,6 +88,9 @@ class Lorem {
                 }
         }
         
+        /* 
+         * Method to generate tradition Latin paragraphs using fzaninotto/faker
+         */
         private static function generateLatinParagraphs($num_sentences, $num_paragraphs) {
                 if (is_null(self::$faker)) {
                         $faker = Factory::create();
@@ -74,6 +104,10 @@ class Lorem {
                 return $text;
         }
         
+        /* 
+         * Method to generate paragraphs based on specific (non-Latin) theme, using
+         * sentenceBase array of sentences for currently selected theme.
+         */
         private static function generateThemeParagraphs($theme, $num_sentences, $num_paragraphs) {
                 self::loadTheme($theme);
                 $text = "";
@@ -90,6 +124,10 @@ class Lorem {
                 return $text;
         }
         
+        /* 
+         * Method to call unordered list generation functions (Latin text handled
+         * differently from other themes)
+         */
         private static function generateUnorderedList($theme, $num_items) {
                 if ($theme == self::THEME_LATIN) {
                         return self::generateLatinUnorderedList($num_items);
@@ -98,6 +136,9 @@ class Lorem {
                 }
         }
         
+        /* 
+         * Method to generate tradition Latin unordered lists using fzaninotto/faker
+         */
         private static function generateLatinUnorderedList($num_items) {
                 if (is_null(self::$faker)) {
                         $faker = Factory::create();
@@ -112,6 +153,10 @@ class Lorem {
                 return $text;
         }
         
+        /* 
+         * Method to generate unordered lists based on specific (non-Latin) theme, using
+         * sentenceBase array of sentences for currently selected theme.
+         */
         private static function generateThemeUnorderedList($theme, $num_items) {
                 self::loadTheme($theme);
                 $text = "<ul>";
@@ -124,6 +169,10 @@ class Lorem {
                 return $text;
         }
         
+        /* 
+         * Method to call ordered list generation functions (Latin text handled
+         * differently from other themes)
+         */
         private static function generateOrderedList($theme, $num_items) {
                 if ($theme == self::THEME_LATIN) {
                         return self::generateLatinOrderedList($num_items);
@@ -132,6 +181,9 @@ class Lorem {
                 }
         }
         
+        /* 
+         * Method to generate tradition Latin ordered lists using fzaninotto/faker
+         */
         private static function generateLatinOrderedList($num_items) {
                 if (is_null(self::$faker)) {
                         $faker = Factory::create();
@@ -146,6 +198,10 @@ class Lorem {
                 return $text;
         }
         
+        /* 
+         * Method to generate ordered lists based on specific (non-Latin) theme, using
+         * sentenceBase array of sentences for currently selected theme.
+         */
         private static function generateThemeOrderedList($theme, $num_items) {
                 self::loadTheme($theme);
                 $text = "<ol>";
@@ -158,6 +214,11 @@ class Lorem {
                 return $text;
         }
         
+        /* 
+         * Calls methods to reset self::$current_theme and load self::$sentenceBase
+         * array of sentences from corresponding theme file, if newly selected 
+         * (non-Latin) theme is different from currently selected theme.
+         */
         private static function loadTheme($theme) {
                 if (!is_null(self::$current_theme) || ($theme != self::$current_theme)) {
                         switch ($theme) {
@@ -179,6 +240,10 @@ class Lorem {
                 }
         }
         
+        /* 
+         * Creates self::$sentenceBase array of sentences from given theme
+         * file. Skips comment line (those beginning with #)
+         */
         private static function createThemeArray($fileDir, $fileName) {
                 $new_theme_array = [];
                 $new_sentence = "";
@@ -198,6 +263,9 @@ class Lorem {
                 return $new_theme_array;                
         }
         
+        /* 
+         * Returns random sentence from self::$sentenceBase array of sentences
+         */
         private static function getThemeSentence($sentenceBase) {
                 $total_sentences = count($sentenceBase);
                 $random_index = rand(0, $total_sentences - 1);

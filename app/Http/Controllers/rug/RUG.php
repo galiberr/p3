@@ -1,23 +1,20 @@
 <?php
+/*
+ * Author:      Roland Galibert
+ * Date:        March 31, 2016
+ * For:         CSCI E-15 Dynamic Web Applications, Spring 2016 - Project 3
+ * Purpose:     RUG class for random user generator tool
+ */
 
 namespace App\Http\Controllers\rug;
-
 use SoapBox\Formatter\Formatter;
 use \Faker\Factory;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of RUG
- *
- * @author galiberr
- */
 class RUG {
 
+        /* 
+         * Data field positions
+         */
         const LAST_NAME = 0;
         const FIRST_NAME = 1;
         const MIDDLE_INITIAL = 2;
@@ -37,9 +34,16 @@ class RUG {
         const MOBILE = 16;
         const COMPANY = 17;
         const JOB_TITLE = 18;
+        
+        /* 
+         * Record count minimum/maximum values
+         */
         const NUM_RECORDS_MIN = 1;
         const NUM_RECORDS_MAX = 100;
 
+        /* 
+         * Array containing field names and corresponding MySQL data types
+         */
         public static $FIELD_NAMES = [
             ['last_name', 'VARCHAR(20)'],
             ['first_name', 'VARCHAR(20)'],
@@ -62,7 +66,9 @@ class RUG {
             ['job_title', 'VARCHAR(20)'],
         ];
 
-        /* Output types */
+        /*
+         *  Output formats
+         */
         const OUTPUT_JSON = 0;
         const OUTPUT_ARRAY = 1;
         const OUTPUT_CSV = 2;
@@ -70,18 +76,48 @@ class RUG {
         const OUTPUT_YAML = 4;
         const OUTPUT_MYSQL = 5;
 
+        /*
+         *  Name of table to be used in MySQL data generation script
+         */
         const MYSQL_TABLE = "users";
         
+        /*
+         * Currently available (non-selected) fields, will change over the
+         * course of application interaction.
+         */
         public static $available_fields = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18",];
+
+        /*
+         * Currently selected fields, will change over the
+         * course of application interaction.
+         */
         public static $selected_fields = [];
 
+        /* 
+         * fzaninotto/faker object
+         */
         private static $faker;
         
+        /* 
+         * Public method to return generated user data in form of code/script
+         */
         public static function generateDataScript($fields, $num_records, $output_type) {
+
+                /*
+                 * Create fzaninotto/faker object if necessary
+                 */
                 if (is_null(self::$faker)) {
                         self::$faker = Factory::create();
                 }
+                
+                /*
+                 * Generate data
+                 */
                 $data = self::generateData($fields, $num_records);
+                
+                /*
+                 * Return generated data in selectd format
+                 */
                 switch ($output_type) {
                         case self::OUTPUT_JSON:
                                 return self::convertArrayToJSON($data);
@@ -98,6 +134,10 @@ class RUG {
                 }
         }
 
+        /* 
+         * Loops to generate required number of records, passing array of 
+         * selected fields to generateRecord()
+         */
         private static function generateData($fields, $num_records) {
                 $data = array();
                 for ($i = 0; $i < $num_records; $i++) {
@@ -106,6 +146,10 @@ class RUG {
                 return $data;
         }
 
+        /* 
+         * Loops to generate single record of desired fields, calling
+         * generateField() to create sample data for current specified field
+         */
         private static function generateRecord($fields) {
                 $record = [];
                 $num_fields = count($fields);
@@ -115,6 +159,10 @@ class RUG {
                 return $record;
         }
 
+        /* 
+         * Calls appropriate fzaninotto/faker object methods to create sample 
+         * data for a specific field type
+         */
         private static function generateField($fieldType) {
                 switch ($fieldType) {
                         case self::LAST_NAME:
@@ -158,30 +206,56 @@ class RUG {
                 }
         }
 
+        /* 
+         * Calls soapbox/Formatter methods to convert given array
+         * to JSON notation
+         */
         private static function convertArrayToJSON($array) {
                 $formatter = Formatter::make($array, Formatter::ARR);
                 return $formatter->toJson();
         }
 
+        /* 
+         * Converts given array into string format
+         */
         private static function convertArrayToString($array) {
                 return var_export($array, true);
         }
 
+        /* 
+         * Calls soapbox/Formatter methods to convert given array
+         * to CSV notation
+         */
         private static function convertArrayToCSV($array) {
                 $formatter = Formatter::make($array, Formatter::ARR);
                 return $formatter->toCsv();
         }
 
+        /* 
+         * Calls soapbox/Formatter methods to convert given array
+         * to XML notation
+         */
         private static function convertArrayToXML($array) {
                 $formatter = Formatter::make($array, Formatter::ARR);
                 return $formatter->toXml();
         }
 
+        /* 
+         * Calls soapbox/Formatter methods to convert given array
+         * to YAML notation
+         */
         private static function convertArrayToYAML($array) {
                 $formatter = Formatter::make($array, Formatter::ARR);
                 return $formatter->toYaml();
         }
 
+        /* 
+         * Creates a MySQL script that will create a table with the given
+         * $table name that contain the elements in the given $array
+         * 
+         * It is expected that the array is a set of associative arrays each
+         * with the same keys/values in the same order
+         */
         private static function convertArrayToMySQL($fields, $array, $table_name) {
                 
                 /*
@@ -237,14 +311,26 @@ class RUG {
                 return $mysql_stmt;
         }
 
+        /* 
+         * Calls fieldsHTML to convert currently available fields into an
+         * HTML multiselect box option/value list.
+         */
         public static function availableFieldsHTML() {
                 return self::fieldsHTML(self::$available_fields);
         }
 
+        /* 
+         * Calls fieldsHTML to convert currently selected fields into an
+         * HTML multiselect box option/value list.
+         */
         public static function selectedFieldsHTML() {
                 return self::fieldsHTML(self::$selected_fields);
         }
 
+        /* 
+         * Converts  the given array of values into an
+         * HTML multiselect box option/value list.
+         */
         private static function fieldsHTML($array) {
                 $html = "";
                 $array_size = count($array);
@@ -255,5 +341,4 @@ class RUG {
                 }
                 return $html;
         }
-
 }

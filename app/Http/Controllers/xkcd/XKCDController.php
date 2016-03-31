@@ -1,9 +1,9 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * Author:      Roland Galibert
+ * Date:        March 31, 2016
+ * For:         CSCI E-15 Dynamic Web Applications, Spring 2016 - Project 3
+ * Purpose:     Controller for XKCD password tool
  */
 
 namespace App\Http\Controllers\xkcd;
@@ -13,6 +13,9 @@ use App\Http\Controllers\xkcd\XKCD;
 
 class XKCDController extends Controller {
 
+        /*
+         * Validation rules
+         */
         private static $rules = [
                         'xkcd_min_length' => 'required|integer|min:8|max:32',
                         'xkcd_num_words' => 'required|integer|min:3|max:8',
@@ -23,6 +26,9 @@ class XKCDController extends Controller {
                             )
         ];
         
+        /*
+         * Validation error messages
+         */
         private static $messages = [
                         'xkcd_min_length.required' => 'Please enter a minimum length for your password.',
                         'xkcd_min_length.integer' => 'Minimum password length must be an integer between 8 and 32.',
@@ -40,13 +46,23 @@ class XKCDController extends Controller {
                         'xkcd_add_this_char.regex' => 'Please enter a one of the chars !@$%^&*-_+=:|~?/.;',
                 ];
 
+        /*
+         * Get method for XKCD password generation application
+         */
         public function getIndex() {
                 $output = "";
                 return view('xkcd.index', ['output' => $output]);
         }
         
+        /*
+         * Post method for XKCD password generation application
+         */
         public function postIndex(Request $request) {
                 $this->validate($request, self::$rules, self::$messages);
+                
+                /*
+                 * Call static XKCD method to generate password
+                 */
                 $output = XKCD::generatePassword(       $request->input('xkcd_min_length'),
                                                         $request->input('xkcd_num_words'),
                                                         $request->input('xkcd_separator'),

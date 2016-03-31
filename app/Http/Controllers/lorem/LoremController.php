@@ -1,9 +1,9 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*
+ * Author:      Roland Galibert
+ * Date:        March 31, 2016
+ * For:         CSCI E-15 Dynamic Web Applications, Spring 2016 - Project 3
+ * Purpose:     Controller for Lorem Ipsum generator tool
  */
 
 namespace App\Http\Controllers\lorem;
@@ -13,12 +13,18 @@ use App\Http\Controllers\lorem\Lorem;
 
 class LoremController extends Controller {
 
+        /*
+         * Validation rules
+         */
         private static $rules = [
                         'lorem_num_sentences' => 'required_if:lorem_format,0|integer|min:1|max:40',
                         'lorem_num_paragraphs' => 'required_if:lorem_format,0|integer|min:1|max:40',
                         'lorem_num_items' => 'required_if:lorem_format,1,2|integer|min:5|max:100',
         ];
         
+        /*
+         * Validation error messages
+         */
         private static $messages = [
                         'lorem_num_sentences.required_if' => 'Please enter the number of sentences per paragraph.',
                         'lorem_num_sentences.integer' => 'Number of sentences must be an integer between 1 and 40',
@@ -34,6 +40,12 @@ class LoremController extends Controller {
                         'lorem_num_items.max' => 'Number of items must be an integer between 5 and 100',
                 ];
 
+        /*
+         * Get method for Lorem Ipsum generation application
+         * 
+         * Note two output types, one for straight text and one for HTML code
+         * (with tag conversion suppressed).
+         */
         public function getIndex() {
                 $output = "";
                 $html_output = "";
@@ -43,6 +55,13 @@ class LoremController extends Controller {
                 ]);
         }
         
+        /*
+         * Post method for Lorem Ipsum generation application, calls static generateLorem() function
+         * with specified parameters
+         * 
+         * Note two output types, one for straight text and one for HTML code
+         * (with tag conversion suppressed).
+         */
         public function postIndex(Request $request) {
                 $this->validate($request, self::$rules, self::$messages);
                 if ($request->input('lorem_output') == Lorem::OUTPUT_TEXT) {
