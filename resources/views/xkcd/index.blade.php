@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-DBF - XKCD Password Generator
+DBF XKCD Password Generator
 @stop
 
 @section('tool_name')
@@ -9,11 +9,36 @@ DBF - XKCD Password Generator
 @stop
 
 @section('tool_description')
-        XKCD Password Generator
+        Easily memorable, highly secure passwords for your website accounts.
+@stop
+
+@section('homeLink')
+/
+@stop
+
+@section('loremLink')
+<li><a href="/lorem">
+@stop
+
+@section('rugLink')
+<li><a href="/rug">
+@stop
+
+@section('xkcdLink')
+<li class="active"><a href="#">
 @stop
 
 @section('content')
-<div class="panel panel-default">
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">
+            
+        Select specifications for your new password, click the generate password button
+        and your new password will appear in the section below.
+    </h2>
+  </div>
+
+<div class="panel-body">
         <form name="xkcd_form" id="xkcd_form" class="form-horizontal" method="POST" action="/xkcd">
                 <fieldset>
                         {{ csrf_field() }}
@@ -21,9 +46,9 @@ DBF - XKCD Password Generator
                         <div class="row">
                                 <div class="col-lg-8">
                                         <div class="form-group">
-                                                <label for="xkcd_min_length" class="col-lg-3 control-label">Min. length<br />(8 to 32)</label>
+                                                <label for="xkcd_min_length" class="col-lg-3 control-label">Min. length</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="xkcd_min_length" name="xkcd_min_length" placeholder="Minimum password length" type="text" value="{{ old('xkcd_min_length') }}">
+                                                        <input class="form-control" id="xkcd_min_length" name="xkcd_min_length" placeholder="8 to 32" type="text" value="{{ old('xkcd_min_length') }}<?php if (isset($_POST['xkcd_min_length'])) echo $_POST['xkcd_min_length'] ?>">
                                                 </div>
                                         </div>
                                 </div>
@@ -39,9 +64,9 @@ DBF - XKCD Password Generator
                         <div class="row">
                                 <div class="col-lg-8">
                                         <div class="form-group">
-                                                <label for="xkcd_num_words" class="col-lg-3 control-label">No. of words<br />(3 to 8, default is 4)</label>
+                                                <label for="xkcd_num_words" class="col-lg-3 control-label">No. of words</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="xkcd_num_words" name="xkcd_num_words" placeholder="Number of words" type="text" value="{{ old('xkcd_min_length') }}">
+                                                        <input class="form-control" id="xkcd_num_words" name="xkcd_num_words" placeholder="3 to 8" type="text" value="{{ old('xkcd_num_words') }}<?php if (isset($_POST['xkcd_num_words'])) echo $_POST['xkcd_num_words'] ?>">
                                                 </div>
                                         </div>
                                 </div>
@@ -131,7 +156,7 @@ DBF - XKCD Password Generator
                                                                 <label>
                                                                         <input name="xkcd_end_num" id="xkcd_end_num" value="specific" type="radio" <?php if (isset($_POST['xkcd_end_num']) && ($_POST['xkcd_end_num'] == 'specific')) echo 'checked' ?>>
                                                                         Add this digit
-                                                                        <input id="xkcd_add_this_num" name="xkcd_add_this_num" placeholder="Enter digit from 0 to 9" type="text">
+                                                                        <input id="xkcd_add_this_num" name="xkcd_add_this_num" placeholder="Enter digit from 0 to 9" type="text" value="{{ old('xkcd_add_this_num') }}<?php if (isset($_POST['xkcd_add_this_num'])) echo $_POST['xkcd_add_this_num'] ?>">
                                                                 </label>
                                                         </div>
                                                 </div>
@@ -163,7 +188,7 @@ DBF - XKCD Password Generator
                                                                 <label>
                                                                         <input name="xkcd_end_special" id="xkcd_end_special" value="specific" type="radio" <?php if (isset($_POST['xkcd_end_special']) && ($_POST['xkcd_end_special'] == 'specific')) echo 'checked' ?>>
                                                                         Add this character
-                                                                        <input id="xkcd_add_this_char" name="xkcd_add_this_char" placeholder="Enter one of !@$%^&*-_+=:|~?/.;" type="text">
+                                                                        <input id="xkcd_add_this_char" name="xkcd_add_this_char" placeholder="Enter one of !@$%^&*-_+=:|~?/.;" type="text" value="{{ old('xkcd_add_this_char') }}<?php if (isset($_POST['xkcd_add_this_char'])) echo $_POST['xkcd_add_this_char'] ?>">
                                                                 </label>
                                                         </div>
                                                 </div>
@@ -197,8 +222,9 @@ DBF - XKCD Password Generator
                 </fieldset>
         </form>
 </div>
+        </div>
 {{-- Output panel --}}     
-<div class="panel panel-primary">
+<div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title">Output</h3>
         </div>
@@ -206,4 +232,10 @@ DBF - XKCD Password Generator
                 {{ $output }}
         </div>
 </div>
+@stop
+
+@section('body')
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="/css/xkcd.js"></script>
 @stop

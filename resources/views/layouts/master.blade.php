@@ -19,11 +19,35 @@
 </head>
 <body>
         <div class="container">
+                {{-- Banner --}}
                 <div class="jumbotron">
                         <h1>Developer's Best Friend</h1>
                         <h2>@yield('tool_name')</h2>
                         <p>@yield('tool_description')</p>
                 </div>
+                
+                {{-- Nav bar --}}
+                <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                        <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="@yield('homeLink')">DBF Home</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                                <ul class="nav navbar-nav">
+                                        @yield('loremLink')Lorem Ipsum Generator</a></li>
+                                        @yield('rugLink')Random User Generator</a></li>
+                                        @yield('xkcdLink')XKCD Password Generator</a></li>
+                                </ul>
+                        </div>
+                </div>
+                </nav>
+                
                 <section>
                     {{-- Main page content will be yielded here --}}
                     @yield('content')

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-        DBF - Lorem Ipsum Generator
+        DBF Lorem Ipsum Generator
 @stop
 
 @section('tool_name')
@@ -9,12 +9,36 @@
 @stop
 
 @section('tool_description')
-        This DBF tool generates filler text 
+        Automatically generated filler text for your websites or other documents.
+@stop
+
+@section('homeLink')
+/
+@stop
+
+@section('loremLink')
+<li class="active"><a href="#">
+@stop
+
+@section('rugLink')
+<li><a href="/rug">
+@stop
+
+@section('xkcdLink')
+<li><a href="/xkcd">
 @stop
 
 @section('content')
 {{-- Input parm form panel --}}
-<div class="panel panel-default">
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">
+        Select a theme and output type/size/format, click the generate text button
+        and your text will appear in the section below.
+    </h2>
+  </div>
+
+<div class="panel-body">
         <form name="lorem_form" id="lorem_form" class="form-horizontal" method="POST" action="/lorem">
                 <fieldset>
                         {{ csrf_field() }}
@@ -35,7 +59,7 @@
                                                                 </label>
                                                                 <label>
                                                                         <input name="lorem_theme" id="lorem_theme" value="2" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '2')) echo 'checked' ?>>
-                                                                        AFI top film quotes 
+                                                                        Movie quotes 
                                                                 </label>
                                                                 <label>
                                                                         <input name="lorem_theme" id="lorem_theme" value="3" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '3')) echo 'checked' ?>>
@@ -83,7 +107,7 @@
                                         <div class="form-group">
                                                 <label for="lorem_num_sentences" class="col-lg-3 control-label">No. sentences</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="lorem_num_sentences" name="lorem_num_sentences" placeholder="Number of sentences per paragraph" type="text" value="{{ old('lorem_num_sentences') }}">
+                                                        <input class="form-control" id="lorem_num_sentences" name="lorem_num_sentences" placeholder="1 to 40 sentences per paragraph" type="text" value="{{ old('lorem_num_sentences') }}<?php if (isset($_POST['lorem_num_sentences'])) echo $_POST['lorem_num_sentences'] ?>">
                                                 </div>
                                         </div>
                                 </div>
@@ -100,7 +124,7 @@
                                         <div class="form-group">
                                                 <label for="lorem_num_paragraphs" class="col-lg-3 control-label">No. paragraphs</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="lorem_num_paragraphs" name="lorem_num_paragraphs" placeholder="Total number of paragraphs" type="text" value="{{ old('lorem_num_paragraphs') }}">
+                                                        <input class="form-control" id="lorem_num_paragraphs" name="lorem_num_paragraphs" placeholder="1 to 40" type="text" value="{{ old('lorem_num_paragraphs') }}<?php if (isset($_POST['lorem_num_paragraphs'])) echo $_POST['lorem_num_paragraphs'] ?>">
                                                 </div>
                                         </div>
                                 </div>
@@ -119,7 +143,7 @@
                                         <div class="form-group">
                                                 <label for="lorem_num_items" class="col-lg-3 control-label">No. list items</label>
                                                 <div class="col-lg-9">
-                                                        <input class="form-control" id="lorem_num_items" name="lorem_num_items" placeholder="Total number of list items" type="text" value="{{ old('lorem_num_items') }}">
+                                                        <input class="form-control" id="lorem_num_items" name="lorem_num_items" placeholder="5 to 100" type="text" value="<?php if (isset($_POST['lorem_num_items'])) echo $_POST['lorem_num_items'] ?>">
                                                 </div>
                                         </div>
                                 </div>
@@ -131,7 +155,7 @@
                                         </p>
                                 </div>
                         </div>
-                        {{-- Output format / copy to clipboard --}}
+                        {{-- Output format --}}
                          <div class="row">
                                  <div class="col-lg-8">
                                         <div class="form-group">
@@ -174,13 +198,15 @@
                 </fieldset>
         </form>
 </div>
+        </div>
 {{-- Output panel --}}     
-<div class="panel panel-primary">
+<div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title">Output</h3>
         </div>
         <div class="panel-body">
-                [name=>'smith']
+                {!! $output !!}
+                {{ $html_output }}
         </div>
 </div>
 @stop

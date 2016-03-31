@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "soapbox/laravel-formatter": "^2.0",
-        "fzaninotto/faker": "^1.5"
+        "fzaninotto/faker": "dev-master"
+        
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

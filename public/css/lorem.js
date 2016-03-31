@@ -7,20 +7,41 @@
 
 $(document).ready(function()
 {
-        $("input[type=radio][name=lorem_format]").change(function()
+        $("input[type=radio][name=lorem_format]").ready(function()
         {
                 switch ($("input[type=radio][name=lorem_format]:checked").val()) {
-                        case 'paragraph':
+                        case '0':
                                 $('#lorem_num_sentences_div').show();
                                 $('#lorem_num_paragraphs_div').show();
                                 $('#lorem_num_items_div').hide();
                                 break;
-                        case 'unordered_list':
+                        case '1':
                                 $('#lorem_num_sentences_div').hide();
                                 $('#lorem_num_paragraphs_div').hide();
                                 $('#lorem_num_items_div').show();
                                 break;
-                        case 'ordered_list':
+                        case '2':
+                                $('#lorem_num_sentences_div').hide();
+                                $('#lorem_num_paragraphs_div').hide();
+                                $('#lorem_num_items_div').show();
+                                break;
+                }
+        });
+              
+        $("input[type=radio][name=lorem_format]").change(function()
+        {
+                switch ($("input[type=radio][name=lorem_format]:checked").val()) {
+                        case '0':
+                                $('#lorem_num_sentences_div').show();
+                                $('#lorem_num_paragraphs_div').show();
+                                $('#lorem_num_items_div').hide();
+                                break;
+                        case '1':
+                                $('#lorem_num_sentences_div').hide();
+                                $('#lorem_num_paragraphs_div').hide();
+                                $('#lorem_num_items_div').show();
+                                break;
+                        case '2':
                                 $('#lorem_num_sentences_div').hide();
                                 $('#lorem_num_paragraphs_div').hide();
                                 $('#lorem_num_items_div').show();

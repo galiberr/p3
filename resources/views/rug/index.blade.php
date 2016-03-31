@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-        DBF - Random User Generator
+        DBF Random User Generator
 @stop
 
 @section('tool_name')
@@ -9,11 +9,35 @@
 @stop
 
 @section('tool_description')
-        Random User Generator
+Mass data records for testing your applications.
+@stop
+
+@section('homeLink')
+/
+@stop
+
+@section('loremLink')
+<li><a href="/lorem">
+@stop
+
+@section('rugLink')
+<li class="active"><a href="#">
+@stop
+
+@section('xkcdLink')
+<li><a href="/xkcd">
 @stop
 
 @section('content')
-<div class="panel panel-default">
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">
+        Select your data record fields/size as well as script format, click the generate data button
+        and your code will appear in the section below.
+    </h2>
+  </div>
+
+<div class="panel-body">
         <form name="rug_form" id="rug_form" class="form-horizontal" method="POST" action="/rug">
                 <fieldset>
                         {{ csrf_field() }}
@@ -64,7 +88,7 @@
                                         <div class="form-group">
                                                 <label for="rug_num_records" class="col-lg-6 control-label">No. records</label>
                                                 <div class="col-lg-6">
-                                                        <input class="form-control" name="rug_num_records" id="rug_num_records" placeholder="Number of records" type="text" value="{{ old('rug_num_records') }}">
+                                                        <input class="form-control" name="rug_num_records" id="rug_num_records" placeholder="1 to 100" type="text" value="{{ old('rug_num_records') }}<?php if (isset($_POST['rug_num_records'])) echo $_POST['rug_num_records'] ?>">
                                                 </div>
                                         </div>                                
                                 </div>
@@ -135,7 +159,9 @@
                 </fieldset>
         </form>
 </div>
-<div class="panel panel-primary">
+        </div>
+{{-- Output panel --}}     
+<div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title">Output</h3>
         </div>
