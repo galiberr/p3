@@ -39,7 +39,7 @@
                                         for your websites or other documents. Choose from:
                                         <ul>
                                                 <li>Traditional Latin text or a popular theme including Monty
-                                                Python, movie quotes or pop lyrics.</li>
+                                                Python, movie quotes or song lyrics.</li>
                                                 <li>Filler text in the form of paragraphs or unordered or ordered lists.</li>
                                                 <li>Output as regular text or HTML.</li>
                                         </ul>

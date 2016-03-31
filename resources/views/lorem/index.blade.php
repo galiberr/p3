@@ -63,7 +63,7 @@
                                                                 </label>
                                                                 <label>
                                                                         <input name="lorem_theme" id="lorem_theme" value="3" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '3')) echo 'checked' ?>>
-                                                                        Beatles lyrics
+                                                                        Song lyrics
                                                                 </label>
                                                         </div>
                                                 </div>

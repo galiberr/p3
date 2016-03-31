@@ -210,6 +210,5 @@ class XKCD {
                      return $word_index;
              }
         }
-        
 }
 ?>

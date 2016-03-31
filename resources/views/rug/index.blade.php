@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-        DBF Random User Generator
+DBF Random User Generator
 @stop
 
 @section('tool_name')
-        Random User Generator
+Random User Generator
 @stop
 
 @section('tool_description')
