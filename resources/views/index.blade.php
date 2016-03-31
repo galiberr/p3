@@ -5,11 +5,11 @@
 @stop
 
 @section('tool_name')
-        Your sidekick in software development
+        Your software development sidekick.
 @stop
 
 @section('tool_description')
-        DBF's time-saving tools make the programmer's life a little easier.
+        DBF's time-saving tools make your life as a programmer a little easier.
 @stop
 
 @section('homeLink')
