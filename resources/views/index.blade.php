@@ -33,7 +33,7 @@
         <table class="table table-striped table-hover ">
                 <tbody>
                         <tr class="danger">
-                                <td><a href="/lorem">Lorem Ipsum Generator</td>
+                                <td><a href="/lorem">Lorem Ipsum Generator</a></td>
                                 <td>
                                         The DBF Lorem Ipsum generator automatically creates filler text
                                         for your websites or other documents. Choose from:
@@ -46,7 +46,7 @@
                                 </td>
                         </tr>
                         <tr class="warning">
-                                <td><a href="/rug">Random User Generator</td>
+                                <td><a href="/rug">Random User Generator</a></td>
                                 <td>
                                         The DBF random user generator creates mass sample data records to save
                                         you time when testing. Data returned in JSON, PHP array, CSV,
@@ -54,7 +54,7 @@
                                 </td>
                         </tr>
                         <tr class="success">
-                                <td><a href="/rug">XKCD Password Generator</td>
+                                <td><a href="/rug">XKCD Password Generator</a></td>
                                 <td>
                                         The DBF XKCD password generator instantly creates an easily memorable but highly
                                         secure password (visit the

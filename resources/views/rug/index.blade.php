@@ -57,8 +57,8 @@ Mass data records for testing your applications.
                                 </div>
                                 {{-- Buttons to add/remove fields --}}
                                 <div class="col-lg-1">
-                                        <a href="#" name="rug_add_field" id="rug_add_field" class="btn btn-primary btn-xs" onClick="SelectMoveRows(document.rug_form.rug_available_fields, document.rug_form.rug_selected_fields)">Add ></a><br />
-                                        <a href="#" name="rug_remove_field" id="rug_remove_field" class="btn btn-primary btn-xs" onClick="SelectMoveRows(document.rug_form.rug_selected_fields, document.rug_form.rug_available_fields)">Remove <</a><br />
+                                        <a href="#" name="rug_add_field" id="rug_add_field" class="btn btn-primary btn-xs" onClick="SelectMoveRows(document.rug_form.rug_available_fields, document.rug_form.rug_selected_fields)">Add &gt;</a><br />
+                                        <a href="#" name="rug_remove_field" id="rug_remove_field" class="btn btn-primary btn-xs" onClick="SelectMoveRows(document.rug_form.rug_selected_fields, document.rug_form.rug_available_fields)">Remove &lt;</a><br />
                                         <a href="#" name="rug_add_all" id="rug_add_all" class="btn btn-primary btn-xs" onClick="SelectMoveAll(document.rug_form.rug_available_fields, document.rug_form.rug_selected_fields)">Add all</a><br />
                                         <a href="#" name="rug_remove_all" id="rug_remove_all" class="btn btn-primary btn-xs" onClick="SelectMoveAll(document.rug_form.rug_selected_fields, document.rug_form.rug_available_fields)">Remove all</a>
                                 </div>
@@ -111,27 +111,27 @@ Mass data records for testing your applications.
                                                         {{-- Option values must correspond to RUG class $OUTPUT_* values --}}
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="rug_output" id="rug_output" value="0" type="radio" <?php if (!isset($_POST['rug_output']) || ($_POST['rug_output'] == '0')) echo 'checked' ?>>
+                                                                        <input name="rug_output" value="0" type="radio" <?php if (!isset($_POST['rug_output']) || ($_POST['rug_output'] == '0')) echo 'checked' ?>>
                                                                         JSON
                                                                 </label>
                                                                 <label>
-                                                                        <input name="rug_output" id="rug_output" value="1" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '1')) echo 'checked' ?>>
+                                                                        <input name="rug_output" value="1" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '1')) echo 'checked' ?>>
                                                                         PHP array
                                                                 </label>
                                                                 <label>
-                                                                        <input name="rug_output" id="rug_output" value="2" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '2')) echo 'checked' ?>>
+                                                                        <input name="rug_output" value="2" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '2')) echo 'checked' ?>>
                                                                         CSV
                                                                 </label>
                                                                 <label>
-                                                                        <input name="rug_output" id="rug_output" value="3" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '3')) echo 'checked' ?>>
+                                                                        <input name="rug_output" value="3" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '3')) echo 'checked' ?>>
                                                                         XML
                                                                 </label>
                                                                 <label>
-                                                                        <input name="rug_output" id="rug_output" value="4" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '4')) echo 'checked' ?>>
+                                                                        <input name="rug_output" value="4" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '4')) echo 'checked' ?>>
                                                                         YAML
                                                                 </label>
                                                                 <label>
-                                                                        <input name="rug_output" id="rug_output" value="5" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '5')) echo 'checked' ?>>
+                                                                        <input name="rug_output" value="5" type="radio" <?php if (isset($_POST['rug_output']) && ($_POST['rug_output'] == '5')) echo 'checked' ?>>
                                                                         MySQL
                                                                 </label>
                                                         </div>

@@ -86,23 +86,23 @@ DBF XKCD Password Generator
                                                 <div class="col-lg-9">
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="xkcd_separator" id="xkcd_separator" value="dash" type="radio" <?php if (!isset($_POST['xkcd_separator']) || ($_POST['xkcd_separator'] == 'dash')) echo 'checked' ?>>
+                                                                        <input name="xkcd_separator" value="dash" type="radio" <?php if (!isset($_POST['xkcd_separator']) || ($_POST['xkcd_separator'] == 'dash')) echo 'checked' ?>>
                                                                         -
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_separator" id="xkcd_separator" value="underscore" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'underscore')) echo 'checked' ?>>
+                                                                        <input name="xkcd_separator" value="underscore" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'underscore')) echo 'checked' ?>>
                                                                         _
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_separator" id="xkcd_separator" value="period" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'period')) echo 'checked' ?>>
+                                                                        <input name="xkcd_separator" value="period" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'period')) echo 'checked' ?>>
                                                                         .
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_separator" id="xkcd_separator" value="hash" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'hash')) echo 'checked' ?>>
+                                                                        <input name="xkcd_separator" value="hash" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'hash')) echo 'checked' ?>>
                                                                         #
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_separator" id="xkcd_separator" value="none" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'none')) echo 'checked' ?>>
+                                                                        <input name="xkcd_separator" value="none" type="radio" <?php if (isset($_POST['xkcd_separator']) && ($_POST['xkcd_separator'] == 'none')) echo 'checked' ?>>
                                                                         None
                                                                 </label>
                                                         </div>
@@ -120,15 +120,15 @@ DBF XKCD Password Generator
                                                 <div class="col-lg-9">
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="xkcd_case" id="xkcd_case" value="lower" type="radio" <?php if (!isset($_POST['xkcd_case']) || ($_POST['xkcd_case'] == 'lower')) echo 'checked' ?>>
+                                                                        <input name="xkcd_case" value="lower" type="radio" <?php if (!isset($_POST['xkcd_case']) || ($_POST['xkcd_case'] == 'lower')) echo 'checked' ?>>
                                                                         lower case
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_case" id="xkcd_case" value="upper" type="radio" <?php if (isset($_POST['xkcd_case']) && ($_POST['xkcd_case'] == 'upper')) echo 'checked' ?>>
+                                                                        <input name="xkcd_case" value="upper" type="radio" <?php if (isset($_POST['xkcd_case']) && ($_POST['xkcd_case'] == 'upper')) echo 'checked' ?>>
                                                                         UPPER CASE
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_case" id="xkcd_case" value="camel" type="radio" <?php if (isset($_POST['xkcd_case']) && ($_POST['xkcd_case'] == 'camel')) echo 'checked' ?>>
+                                                                        <input name="xkcd_case" value="camel" type="radio" <?php if (isset($_POST['xkcd_case']) && ($_POST['xkcd_case'] == 'camel')) echo 'checked' ?>>
                                                                         Camel Case
                                                                 </label>
                                                         </div>
@@ -146,15 +146,15 @@ DBF XKCD Password Generator
                                                 <div class="col-lg-9">
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="xkcd_end_num" id="xkcd_end_num" value="none" type="radio" <?php if (!isset($_POST['xkcd_end_num']) || ($_POST['xkcd_end_num'] == 'none')) echo 'checked' ?>>
+                                                                        <input name="xkcd_end_num" value="none" type="radio" <?php if (!isset($_POST['xkcd_end_num']) || ($_POST['xkcd_end_num'] == 'none')) echo 'checked' ?>>
                                                                         No
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_end_num" id="xkcd_end_num" value="random" type="radio" <?php if (isset($_POST['xkcd_end_num']) && ($_POST['xkcd_end_num'] == 'random')) echo 'checked' ?>>
+                                                                        <input name="xkcd_end_num" value="random" type="radio" <?php if (isset($_POST['xkcd_end_num']) && ($_POST['xkcd_end_num'] == 'random')) echo 'checked' ?>>
                                                                         Add random digit
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_end_num" id="xkcd_end_num" value="specific" type="radio" <?php if (isset($_POST['xkcd_end_num']) && ($_POST['xkcd_end_num'] == 'specific')) echo 'checked' ?>>
+                                                                        <input name="xkcd_end_num" value="specific" type="radio" <?php if (isset($_POST['xkcd_end_num']) && ($_POST['xkcd_end_num'] == 'specific')) echo 'checked' ?>>
                                                                         Add this digit
                                                                         <input id="xkcd_add_this_num" name="xkcd_add_this_num" placeholder="Enter digit from 0 to 9" type="text" value="{{ old('xkcd_add_this_num') }}<?php if (isset($_POST['xkcd_add_this_num'])) echo $_POST['xkcd_add_this_num'] ?>">
                                                                 </label>
@@ -178,15 +178,15 @@ DBF XKCD Password Generator
                                                 <div class="col-lg-9">
                                                         <div class="radio">
                                                                 <label>
-                                                                        <input name="xkcd_end_special" id="xkcd_end_special" value="none" type="radio" <?php if (!isset($_POST['xkcd_end_special']) || ($_POST['xkcd_end_special'] == 'none')) echo 'checked' ?>>
+                                                                        <input name="xkcd_end_special" value="none" type="radio" <?php if (!isset($_POST['xkcd_end_special']) || ($_POST['xkcd_end_special'] == 'none')) echo 'checked' ?>>
                                                                         No
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_end_special" id="xkcd_end_special" value="random" type="radio" <?php if (isset($_POST['xkcd_end_special']) && ($_POST['xkcd_end_special'] == 'random')) echo 'checked' ?>>
+                                                                        <input name="xkcd_end_special" value="random" type="radio" <?php if (isset($_POST['xkcd_end_special']) && ($_POST['xkcd_end_special'] == 'random')) echo 'checked' ?>>
                                                                         Add random character
                                                                 </label>
                                                                 <label>
-                                                                        <input name="xkcd_end_special" id="xkcd_end_special" value="specific" type="radio" <?php if (isset($_POST['xkcd_end_special']) && ($_POST['xkcd_end_special'] == 'specific')) echo 'checked' ?>>
+                                                                        <input name="xkcd_end_special" value="specific" type="radio" <?php if (isset($_POST['xkcd_end_special']) && ($_POST['xkcd_end_special'] == 'specific')) echo 'checked' ?>>
                                                                         Add this character
                                                                         <input id="xkcd_add_this_char" name="xkcd_add_this_char" placeholder="Enter one of !@$%^&*-_+=:|~?/.;" type="text" value="{{ old('xkcd_add_this_char') }}<?php if (isset($_POST['xkcd_add_this_char'])) echo $_POST['xkcd_add_this_char'] ?>">
                                                                 </label>

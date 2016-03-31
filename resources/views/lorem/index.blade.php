@@ -49,19 +49,19 @@
                                                         <div class="col-lg-9">
                                                                 <div class="radio">
                                                                         <label>
-                                                                                <input name="lorem_theme" id="lorem_theme" value="0" type="radio" <?php if (!isset($_POST['lorem_theme']) || ($_POST['lorem_theme'] == '0')) echo 'checked' ?>>
+                                                                                <input name="lorem_theme" value="0" type="radio" <?php if (!isset($_POST['lorem_theme']) || ($_POST['lorem_theme'] == '0')) echo 'checked' ?>>
                                                                                 Traditional Latin
                                                                         </label>
                                                                         <label>
-                                                                                <input name="lorem_theme" id="lorem_theme" value="1" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '1')) echo 'checked' ?>>
+                                                                                <input name="lorem_theme" value="1" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '1')) echo 'checked' ?>>
                                                                                 Monty Python
                                                                         </label>
                                                                         <label>
-                                                                                <input name="lorem_theme" id="lorem_theme" value="2" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '2')) echo 'checked' ?>>
+                                                                                <input name="lorem_theme" value="2" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '2')) echo 'checked' ?>>
                                                                                 Movie quotes 
                                                                         </label>
                                                                         <label>
-                                                                                <input name="lorem_theme" id="lorem_theme" value="3" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '3')) echo 'checked' ?>>
+                                                                                <input name="lorem_theme" value="3" type="radio" <?php if (isset($_POST['lorem_theme']) && ($_POST['lorem_theme'] == '3')) echo 'checked' ?>>
                                                                                 Song lyrics
                                                                         </label>
                                                                 </div>
@@ -81,15 +81,15 @@
                                                         <div class="col-lg-9">
                                                                 <div class="radio">
                                                                         <label>
-                                                                                <input name="lorem_format" id="lorem_format" value="0" type="radio" <?php if (!isset($_POST['lorem_format']) || ($_POST['lorem_format'] == '0')) echo 'checked' ?>>
+                                                                                <input name="lorem_format" value="0" type="radio" <?php if (!isset($_POST['lorem_format']) || ($_POST['lorem_format'] == '0')) echo 'checked' ?>>
                                                                                 Paragraph
                                                                         </label>
                                                                         <label>
-                                                                                <input name="lorem_format" id="lorem_format" value="1" type="radio" <?php if (isset($_POST['lorem_format']) && ($_POST['lorem_format'] == '1')) echo 'checked' ?>>
+                                                                                <input name="lorem_format" value="1" type="radio" <?php if (isset($_POST['lorem_format']) && ($_POST['lorem_format'] == '1')) echo 'checked' ?>>
                                                                                 Bullet list
                                                                         </label>
                                                                         <label>
-                                                                                <input name="lorem_format" id="lorem_format" value="2" type="radio" <?php if (isset($_POST['lorem_format']) && ($_POST['lorem_format'] == '2')) echo 'checked' ?>>
+                                                                                <input name="lorem_format" value="2" type="radio" <?php if (isset($_POST['lorem_format']) && ($_POST['lorem_format'] == '2')) echo 'checked' ?>>
                                                                                 Ordered list
                                                                         </label>
                                                                 </div>
@@ -162,11 +162,11 @@
                                                         <div class="col-lg-3">
                                                                 <div class="radio">
                                                                         <label>
-                                                                                <input name="lorem_output" id="lorem_output" value="0" type="radio" <?php if (!isset($_POST['lorem_output']) || ($_POST['lorem_output'] == '0')) echo 'checked' ?>>
+                                                                                <input name="lorem_output" value="0" type="radio" <?php if (!isset($_POST['lorem_output']) || ($_POST['lorem_output'] == '0')) echo 'checked' ?>>
                                                                                 Text
                                                                         </label>
                                                                         <label>
-                                                                                <input name="lorem_output" id="lorem_output" value="1" type="radio" <?php if (isset($_POST['lorem_output']) && ($_POST['lorem_output'] == '1')) echo 'checked' ?>>
+                                                                                <input name="lorem_output" value="1" type="radio" <?php if (isset($_POST['lorem_output']) && ($_POST['lorem_output'] == '1')) echo 'checked' ?>>
                                                                                 HTML code
                                                                         </label>
                                                                 </div>
